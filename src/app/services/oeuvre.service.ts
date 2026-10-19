@@ -12,7 +12,11 @@ export class OeuvreService {
   constructor() {
     this.genres = [
       { idGenre: 1, nomGenre: "Peinture" },
-      { idGenre: 2, nomGenre: "Sculpture" }
+      { idGenre: 2, nomGenre: "Sculpture" },
+      { idGenre: 3, nomGenre: "piece de theatre" },
+      { idGenre: 4, nomGenre: "poeme" },
+      { idGenre: 5, nomGenre: "film" }
+
     ];
 
     this.oeuvres = [
@@ -54,5 +58,9 @@ export class OeuvreService {
 
   consulterGenre(id: number): Genre {
     return this.genres.find(cat => cat.idGenre == id)!;
+  }
+
+  rechercherParGenre(idGenre: number): Oeuvre[] {
+    return this.oeuvres.filter(o => o.genre && o.genre.idGenre == idGenre);
   }
 }

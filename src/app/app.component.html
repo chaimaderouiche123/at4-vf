@@ -21,6 +21,9 @@
           <ul class="dropdown-menu" [class.show]="isOeuvresOpen">
             <li><a class="dropdown-item" routerLink="/add-oeuvre" (click)="isOeuvresOpen = false">Ajouter</a></li>
             <li><a class="dropdown-item" routerLink="/oeuvres" (click)="isOeuvresOpen = false">Lister</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/rechercheParGenre" (click)="isOeuvresOpen = false">Recherche par Genre</a></li>
+            <li><a class="dropdown-item" routerLink="/rechercheParNom" (click)="isOeuvresOpen = false">Recherche par Nom</a></li>
           </ul>
         </li>
       </ul>

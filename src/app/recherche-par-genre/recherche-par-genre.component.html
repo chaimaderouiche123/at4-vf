@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label class="form-label font-weight-bold">Genres</label>
+    <select class="form-control form-control-lg" id="idGenre" name="idGenre" [(ngModel)]="idGenre" (change)="onChange()">
+      <option value="">-- Tous les genres --</option>
+      @for(cat of genres; track cat.idGenre) {
+        <option [value]="cat.idGenre">{{ cat.nomGenre }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (oeuvre of oeuvres; track oeuvre.idOeuvre) {
+            <tr>
+              <td>{{ oeuvre.idOeuvre }}</td>
+              <td>{{ oeuvre.titreOeuvre }}</td>
+              <td>{{ oeuvre.prixOeuvre }}</td>
+              <td>{{ oeuvre.dateCreation | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ oeuvre.genre?.nomGenre }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

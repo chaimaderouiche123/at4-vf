@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <!-- Option A : Recherche instantanée avec event (keyup) -->
+  <form class="form-inline mb-3">
+    <div class="form-group mx-sm-3 mb-2">
+      <label class="form-label font-weight-bold me-2">Recherche par Nom (Event keyup) :</label>
+      <input class="form-control" #searchTermInput (keyup)="onKeyUp(searchTermInput.value)" placeholder="Tapez un titre...">
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Option B : Recherche avec le Pipe searchFilter -->
+  <form class="form-inline mb-4">
+    <div class="form-group mx-sm-3 mb-2">
+      <label class="form-label font-weight-bold me-2">Recherche par Nom (Pipe) :</label>
+      <input [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Tapez un titre...">
+    </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (oeuvre of oeuvres | searchFilter: searchTerm; track oeuvre.idOeuvre) {
+            <tr>
+              <td>{{ oeuvre.idOeuvre }}</td>
+              <td>{{ oeuvre.titreOeuvre }}</td>
+              <td>{{ oeuvre.prixOeuvre }}</td>
+              <td>{{ oeuvre.dateCreation | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ oeuvre.genre?.nomGenre }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
